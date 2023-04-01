@@ -34,4 +34,10 @@ public class TodoService implements ITodoService {
     public Todo findTodoByName(String nameTodo) {
         return itodoRepository.findById(nameTodo).get();
     }
+
+    @Override
+    public void deleteAll() {
+         itodoRepository.deleteAll();
+
+    }
 }

@@ -120,7 +120,21 @@
             transition: 0.3s;
             border-radius: 0;
         }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: orangered;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
 
+        a:hover {
+            background-color: red;
+        }
         .addBtn:hover {
             background-color: #bbb;
         }
@@ -130,11 +144,11 @@
 <form method="post" action="/new-todo">
     <div id="myDIV" class="header" th:object="${todo}">
         <h2>My To Do List</h2>
-        <input th:field="*{nameOfTodo}" id="myInput" placeholder="Title..." style="float: left; ">
+        <input th:field="*{nameOfTodo}" id="myInput" placeholder="Title..." style="float: left;margin-bottom: -50px ">
         <input th:field="*{checkConfirm}" type="hidden">
-        <input th:field="*{deadLine}" type="date">
+        <input th:field="*{deadLine}" type="date" style="margin-top: 35px">
         <!--    <p></p>h-->
-        <button type="submit" class="addBtn" style="width: 300px;height: 80px;margin: 20px">Add</button>
+        <button type="submit" class="addBtn" style="width: 150px;height: 80px; margin-left: 15px;">Add</button>
     </div>
 </form>
 <table class="table">
@@ -148,7 +162,7 @@
         <td th:text="${todo.deadLine}"></td>
         <td th:if="${todo.getCheckConfirm()==1}"><i class="fa-solid fa-check"></i>
         </td>
-        <td th:if="${todo.getCheckConfirm()==0}"><a style="border: 1px;color: white;background-color: orangered;text-decoration: none" th:href="@{checkconfirm?nameTodo=__${todo.getNameOfTodo()}__}">Done now !!!</a></td>
+        <td th:if="${todo.getCheckConfirm()==0}"><a th:href="@{checkconfirm?nameTodo=__${todo.getNameOfTodo()}__}">Done now !!!</a></td>
     </tr>
 </table>
 <nav aria-label="Page navigation example">
@@ -164,6 +178,8 @@
     </ul>
 </nav>
 <b th:text="${sms}"></b>
+<br>
+<a th:if="${listTodosPage.totalPages!=0}" th:href="@{deleteall}">Delete All !!!</a>
 
 
 </body>

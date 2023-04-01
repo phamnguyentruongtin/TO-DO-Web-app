@@ -52,4 +52,13 @@ public class TodoController {
         ModelAndView modelAndView = new ModelAndView("redirect:/todolist");
         return modelAndView;
     }
+    @GetMapping("deleteall")
+    public ModelAndView deleteAll(RedirectAttributes redirectAttributes){
+        itodoService.deleteAll();
+        String sms = "success";
+        redirectAttributes.addFlashAttribute("sms", sms);
+        ModelAndView modelAndView = new ModelAndView("redirect:/todolist");
+        return modelAndView;
+    }
+
 }

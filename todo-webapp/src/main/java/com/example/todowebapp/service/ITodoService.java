@@ -11,4 +11,5 @@ public interface ITodoService {
     void confirmFinishTodo(Todo todo);
     Page<Todo> findAllTodoListOrByName(String name, PageRequest page);
     Todo findTodoByName(String nameTodo);
+    void deleteAll();
 }
